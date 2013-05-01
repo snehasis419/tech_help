@@ -1,0 +1,52 @@
+ 1950  git clone 
+ 1951  git clone git://git.debian.org/git/tux4kids/tuxtype.git
+ 1952  git clone git://git.debian.org/git/tux4kids/t4kcommon.git
+ 1953  poweroff
+ 1954  startx
+ 1955  git clone git://git.debian.org/git/tux4kids/t4kcommon.git
+ 1956  git clone git://git.debian.org/git/tux4kids/tuxtype.git
+ 1957  cd tuxtype
+ 1958  grep -R -i "a" *
+ 1959  cd tuxtype
+ 1960  grep -R -i "dist_images_tux_DATA" *
+ 1961  grep -R -i "img" *
+ 1962  cd tuxtype
+ 1963  grep -R -i "img" *
+ 1964  grep -R -i "run0" *
+ 1965  cd tuxtype
+ 1966  grep -R -i "run0" *
+ 1967  grep -R -i "cascade" *
+ 1968  cd tuxtype
+ 1969  grep -R -i "animal" *
+ 1970  grep -R -i "dist_themes_thai_words_DATA" *
+ 1971  grep -R -i "makefile" *
+ 1972  cd tuxtype/src
+ 1973  grep -R -i "makefile.in" *
+ 1974  grep -R -i "makefile" *
+ 1975  git push --repo=<git@github.com:snehasis419/tux_proposal.git>
+ 1976  mkdir tuxtype_proposal
+ 1977  cd tuxtype_proposal/
+ 1978  git clone git@github.com:snehasis419/tux_proposal.git
+ 1979  ls
+ 1980  ls -A
+ 1981  ls -a
+ 1982  cd tux_proposal/
+ 1983  ls
+ 1984  ls -a
+ 1985  echo hi>hi.txt
+ 1986  ls
+ 1987  git status -s
+ 1988  git add hi.txt
+ 1989  git status
+ 1990  git status -s
+ 1991  git commit
+ 1992  git commit -m
+ 1993  git commit -m try
+ 1994  man git
+ 1995  git push
+ 1996  git push origin master
+ 1997  cd .git
+ 1998  nano conig
+ 1999  nano config
+ 2000  history
+
