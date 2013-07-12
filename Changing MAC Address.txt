@@ -1,0 +1,33 @@
+Changing Your MAC Address:-
+
+If you want to increase your anonymity by changing your MAC address, here’s how you do it. I am mainly using backtrack flavor of Linux myself but you can do this on any linux flavor. We will use simply use the Linux Terminal for this purpose. 
+
+Use this command in the terminal:-
+
+sudo apt-get install macchanger
+
+The above command is required if macchanger is not already installed on your system. If it is installed like in the backtrack flavor of linux, then you do not need to reinstall it.
+
+Now use this command:-
+
+ifconfig eth0 down
+
+The above is used to turn down the network interface card, which is required in order to change the mac address.
+
+macchanger -r eth0
+
+The above command is required to get a random MAC id for yourself.
+
+If you want to get a specific MAC id for yourself then use the command below:-
+
+macchanger –m Your_Faked_MAC_Address eth0
+
+example:-  macchanger –m AA:12:23:54:89:1A eth0
+
+Then type the command below:-
+
+ifconfig eth0 up
+
+The above is to get your network interface card up and running again.   
+
+So the above is basically how you change the MAC address of your Linux machine in case you need anonymity in the network.

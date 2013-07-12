@@ -1,0 +1,8 @@
+Why use PDO:-
+
+1) Prevents sql injection. When we use prepare query it precompiles the sql statement and then sends the data to the server for execution. So it stops SQL
+injection.
+
+2) PDO is more portable
+
+3) It is better for handling errors. Everything you write in PDO has to be put in a try/catch block.

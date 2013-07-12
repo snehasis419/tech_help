@@ -1,0 +1,75 @@
+Buffer Overflow:-
+
+Buffer Overflow Attacks:-
+
+ In this section I am gonna be blabbering about buffer overflow attacks. Now, have you ever heard your teacher saying “ do not use the gets function”, even the gcc flasing a warning at you like “the gets function is dangerous and should not be used.” This is mainly why they act that way, because they can be used for buffer overflow attacks.
+
+Now I will try to keep this very simple. First, open gedit and type or copy the following c code:-
+
+#include<stdio.h>
+void hi()
+{
+   printf (“hello\n”);
+}
+hey()
+{
+  char buffer[6];
+  gets(buffer);
+  puts(buffer);
+}
+ main()
+{
+ hey();
+ return 0;
+}
+
+So the program consists of a main function, a function which is called from main and a function which never gets called apparently. Save it using filename.c . 
+
+Now compile the program by typing the following in the terminal:-
+
+gcc  –ggdb  –fno-stack-protector  -mpreferred-stack-boundary=2  -o  output  filename.c
+
+-ggdb option is used to mainly make the output file loadable in the gdb debugger later. You can read more about the gdb debugger if you are new to it in http://www.gnu.org/software/gdb/.
+
+In most newer OS’s stack smashing detection is automatically turned on. So we turn it off by using            –fno-stack-protector .
+
+-mpreferred-stack-boundary=num means 2 to the power num bytes. The stack boundary by default is 2 to the power 4 bytes or  -mpreferred-stack-boundary=4. In some processors like Pentium and Pentium pro values should be aligned to an 8 byte or suffer performance issues.
+
+So after this you issue the command in terminal:
+
+gdb output
+
+Mainly for loading the output file in gdb
+
+Then type
+
+disas hi  
+
+hi is the name of the function which was never called.
+
+Now take the first hex address that appears. In my case it was 0x08048414. This value is the starting value of the hi function.
+
+
+
+  	In the stack Layout, At first there is the 8 bytes variable buffer. Then EBP of 4 bytes and then we have to place the return address as the beginning address of hi, so that the control of th program goes to the hi function.
+
+So now type in terminal:-
+
+printf “5647892qasdc\x14\x84\x04\x08” | ./output
+
+The address is entered in 2bits reverse order. If you recall my address of hi was 0x08048414 so we enter \x14\x84\x04\x08. The \x is used in order to enter hexadecimal values.
+
+So here we are piping the printf into the gets of the hello function. We are filling the first twelve bytes of the stack with any value and then filling the return address with the starting address of the hi function.
+
+So we should get an output:-
+
+5647892qasdc
+
+hello
+
+Segmentation Fault
+
+So by tweaking the input to the gets we are calling a function hi. This is the very basic idea as to how a buffer overflow attack works.
+
+Attackers mainly use the hi function as a source to spawn a shell in the victim machine. Then it is called as shellcode.
+
